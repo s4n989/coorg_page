@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coorg Offsite 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=JetBrains+Mono:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F6F9; --surface:#FFFFFF; --surface2:#F8FAFC; --ink:#1F2933; --muted:#5F6B78; --line:#DEE5EC;
+  --green:#BBD5EE; --green-soft:#E3EEF8; --green-ink:#2C5277;
+  --coffee:#D5DAE0; --coffee-soft:#ECEFF2; --coffee-ink:#4A535E;
+  --accent:#3F6E9C; --accent-soft:#E1ECF7;
+  --chip:#ECF0F4; --chip-ink:#4F5A66;
+  --fill:#B0552A; --onblk:#1F2933;
+  --display:"Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body:"Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12161B; --surface:#1A2028; --surface2:#212832; --ink:#E7ECF1; --muted:#9DA8B4; --line:#2F3843;
+    --green:#9EC1E3; --green-soft:#1E2C3B; --green-ink:#A9CBEB;
+    --coffee:#B9C0C8; --coffee-soft:#262C34; --coffee-ink:#C9D0D8;
+    --accent:#8DB6E0; --accent-soft:#1F2D3D;
+    --chip:#262D36; --chip-ink:#C2CBD5; --fill:#F0A07A; --onblk:#161B21;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12161B; --surface:#1A2028; --surface2:#212832; --ink:#E7ECF1; --muted:#9DA8B4; --line:#2F3843;
+  --green:#9EC1E3; --green-soft:#1E2C3B; --green-ink:#A9CBEB;
+  --coffee:#B9C0C8; --coffee-soft:#262C34; --coffee-ink:#C9D0D8;
+  --accent:#8DB6E0; --accent-soft:#1F2D3D;
+  --chip:#262D36; --chip-ink:#C2CBD5; --fill:#F0A07A; --onblk:#161B21;
+  color-scheme: dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 96px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1080px;margin:0 auto;padding:56px 24px 96px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* Header */
+.kicker{font-family:var(--mono);font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+h1{font-family:var(--display);font-weight:900;font-size:clamp(56px,11vw,128px);line-height:.88;letter-spacing:-.01em;text-transform:uppercase;margin:0 0 20px}
+.lede{font-size:clamp(19px,2.2vw,23px);color:var(--muted);max-width:34em;margin:0}
+.count{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-family:var(--mono);font-size:14px;font-weight:700;color:var(--accent)}
+.count::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.count[hidden]{display:none}
+
+/* Tabs */
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;margin:44px 0 0;padding:8px 0;background:var(--bg)}
+.tablist{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px;box-shadow:0 2px 10px rgba(23,32,42,.06)}
+.tab{appearance:none;border:0;background:transparent;color:var(--muted);font:700 17px/1 var(--body);padding:15px 8px;border-radius:999px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--surface)}
+.tab:hover:not([aria-selected="true"]){color:var(--ink)}
+
+.panel{padding-top:36px}
+.panel[hidden]{display:none}
+.eyebrow{font-family:var(--mono);font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(40px,6vw,58px);line-height:.95;text-transform:uppercase;margin:0 0 14px}
+.intro{color:var(--muted);font-size:20px;max-width:36em;margin:0 0 26px}
+
+/* Legend + strip */
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.pill{display:inline-flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-weight:700;font-size:16px}
+.sw{width:16px;height:16px;border-radius:4px;flex:none}
+.sw.green{background:var(--green)} .sw.coffee{background:var(--coffee)}
+.sw.hatch{background:repeating-linear-gradient(135deg,var(--muted) 0 3px,transparent 3px 6px)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;color:var(--muted);font-size:16px;margin-bottom:22px}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.mk{font-family:var(--mono);font-weight:700;color:var(--accent)}
+
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.daybtn{appearance:none;border:0;background:none;padding:0;text-align:center;cursor:pointer;color:var(--ink);font:inherit}
+.daybtn .dl{font-family:var(--mono);font-size:14px;color:var(--muted);display:block}
+.daybtn .dn{font-family:var(--mono);font-weight:700;font-size:20px;display:block;margin-bottom:6px}
+.blk{position:relative;display:flex;align-items:center;justify-content:center;height:78px;border-radius:10px;color:var(--onblk);font-family:var(--mono);font-weight:700;font-size:clamp(14px,2.2vw,19px);letter-spacing:.08em;text-shadow:none}
+.blk.stay{background:var(--green)}
+.blk.out{background:repeating-linear-gradient(135deg,rgba(255,255,255,.17) 0 7px,transparent 7px 16px),linear-gradient(135deg,var(--coffee) 0 48%,var(--green) 52% 100%)}
+.blk.back{background:repeating-linear-gradient(135deg,rgba(255,255,255,.17) 0 7px,transparent 7px 16px),linear-gradient(135deg,var(--green) 0 48%,var(--coffee) 52% 100%)}
+.daybtn:hover .blk{filter:brightness(1.08)}
+.marks{position:absolute;top:-12px;right:10px;display:flex;gap:5px}
+.marks i{font-style:normal;width:24px;height:24px;border-radius:50%;background:var(--surface);color:var(--accent);border:1px solid var(--line);display:grid;place-items:center;font-size:12px;font-family:var(--mono);font-weight:700;text-shadow:none;letter-spacing:0}
+.months{display:flex;justify-content:space-between;font-family:var(--mono);font-size:14px;color:var(--muted);margin:8px 4px 34px}
+
+/* Day cards */
+.day{display:grid;grid-template-columns:150px 1fr;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:26px}
+.date{background:var(--green);color:var(--onblk);text-align:center;padding:30px 10px}
+.date.travel{background:var(--coffee)}
+.date .dw{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:16px}
+.date .dd{font-family:var(--display);font-weight:900;font-size:72px;line-height:1;margin:6px 0}
+.date .dm{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:16px}
+.body{padding:28px 30px 30px;min-width:0}
+.place{font-family:var(--mono);font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0}
+h3{font-family:var(--display);font-weight:800;font-size:40px;line-height:1;margin:6px 0 10px}
+.sum{color:var(--muted);font-size:19px;max-width:36em;margin:0 0 22px}
+
+.box{border:1px solid var(--line);border-radius:14px;padding:20px 22px 12px;margin-bottom:18px}
+.boxh{font-family:var(--mono);font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.rows{list-style:none;margin:0;padding:0}
+.row{display:grid;grid-template-columns:170px 1fr auto;align-items:center;gap:14px;padding:12px 0;border-top:1px dotted var(--line)}
+.row:first-child{border-top:0}
+.row .t{font-family:var(--mono);font-weight:700;font-size:16px;white-space:nowrap}
+.row .a{font-weight:600}
+.row .a small{display:block;font-weight:400;color:var(--muted);font-size:15px}
+.tag{font-family:var(--mono);font-weight:700;font-size:13px;padding:6px 12px;border-radius:999px;background:var(--chip);color:var(--chip-ink);white-space:nowrap}
+.tag.meal{background:var(--green-soft);color:var(--green-ink)}
+.tag.team{background:var(--coffee-soft);color:var(--coffee-ink)}
+.tag.eve{background:var(--accent-soft);color:var(--accent)}
+.row.now{background:var(--accent-soft);margin:0 -12px;padding:12px;border-radius:10px;border-top-color:transparent}
+.row.now .t::after{content:" now";color:var(--accent)}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.note{background:var(--surface2);border-radius:14px;padding:20px 22px}
+.note ul{margin:0;padding:0;list-style:none}
+.note li{position:relative;padding:8px 0 8px 30px;border-top:1px solid var(--line)}
+.note li:first-child{border-top:0}
+.note li::before{content:"";position:absolute;left:4px;top:15px;width:12px;height:12px;border-radius:3px;border:2px solid var(--green-ink)}
+.note li strong{display:block}
+.note li span{color:var(--muted);font-size:16px}
+
+.fill{color:var(--fill);border-bottom:2px dashed var(--fill);font-weight:700}
+
+/* Travel */
+.fleet{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
+.fleet div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 22px;min-width:150px}
+.fleet b{display:block;font-family:var(--display);font-weight:900;font-size:48px;line-height:1}
+.fleet span{color:var(--muted)}
+.leg{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px 30px 18px;margin-bottom:22px}
+.leg h3{font-size:36px}
+.route{font-family:var(--mono);font-weight:700;font-size:17px;color:var(--muted);margin:0 0 14px}
+
+/* Pack */
+.packgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:34px}
+.pack{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 22px 14px}
+.pack h3{font-size:32px;margin-top:0}
+.chk{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line);cursor:pointer}
+.chk:first-of-type{border-top:0}
+.chk input{appearance:none;flex:none;width:22px;height:22px;margin:2px 0 0;border:2px solid var(--green-ink);border-radius:6px;display:grid;place-items:center;cursor:pointer;background:var(--surface)}
+.chk input:checked{background:var(--green-ink)}
+.chk input:checked::after{content:"";width:6px;height:11px;border:solid var(--surface);border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.chk input:checked + span{color:var(--muted);text-decoration:line-through}
+.chk span small{display:block;color:var(--muted);font-size:15px;text-decoration:none}
+.progress{font-family:var(--mono);font-weight:700;font-size:15px;color:var(--green-ink);margin:-8px 0 22px}
+.contacts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px}
+.contact .role{font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.contact .nm{font-weight:700;font-size:20px;margin:6px 0 2px}
+footer{margin-top:50px;color:var(--muted);font-size:15px}
+
+.waiting{margin-top:38px}
+.waiting ul{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.waiting li{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.waiting b{display:block;font-family:var(--display);font-weight:800;font-size:30px;line-height:1.05;text-transform:uppercase}
+.waiting span{color:var(--muted);font-size:16px}
+.rules{list-style:none;margin:0 0 40px;padding:0;counter-reset:r}
+.rules li{counter-increment:r;display:grid;grid-template-columns:64px 1fr;gap:4px 18px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 26px;margin-bottom:12px}
+.rules li::before{content:counter(r);grid-row:span 2;font-family:var(--display);font-weight:900;font-size:56px;line-height:.9;color:var(--green-ink)}
+.rules h3{font-size:30px;margin:0}
+.rules p{margin:0;color:var(--muted);max-width:40em}
+.rules a{color:var(--green-ink);font-weight:700}
+.docs{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 24px}
+.docs a{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-weight:700;text-decoration:none}
+.docs a:hover{border-color:var(--green)}
+.wx{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:22px}
+.wxday{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.wxtop{background:var(--green);color:var(--onblk);padding:18px 22px;display:flex;align-items:center;justify-content:space-between}
+.wxday:first-child .wxtop,.wxday:last-child .wxtop{background:var(--coffee)}
+.wxtop .wd{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:15px}
+.wxtop .ic{font-size:34px;line-height:1}
+.wxbody{padding:18px 22px 20px}
+.temps{font-family:var(--display);font-weight:900;font-size:58px;line-height:1}
+.temps span{font-size:32px;color:var(--muted);font-weight:800}
+.cond{color:var(--muted);margin:8px 0 12px;font-size:16px}
+.slots{list-style:none;margin:0;padding:0}
+.slots li{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px dotted var(--line);font-weight:600;font-size:16px}
+.slots li span{font-family:var(--mono);font-weight:500;font-size:14px;color:var(--muted)}
+.slots li.wet{color:var(--accent)}
+.src{color:var(--muted);font-size:15px;margin-top:22px}
+.src a{color:var(--green-ink);font-weight:700}
+@media (max-width:820px){
+  .wx{grid-template-columns:1fr}
+  .waiting ul{grid-template-columns:1fr 1fr}
+  .rules li{grid-template-columns:44px 1fr;padding:18px}
+  .rules li::before{font-size:42px}
+  .cols,.packgrid,.contacts{grid-template-columns:1fr}
+  .day{grid-template-columns:1fr}
+  .date{display:flex;align-items:baseline;justify-content:flex-start;gap:12px;padding:16px 22px;text-align:left}
+  .date .dd{font-size:46px;margin:0}
+  .body{padding:22px 20px 22px}
+  .row{grid-template-columns:1fr auto;gap:4px 12px}
+  .row .t{grid-column:1/-1;font-size:15px}
+  .leg{padding:22px 20px 14px}
+}
+@media (max-width:520px){
+  body{font-size:17px}
+  .wrap{padding:36px 16px 72px}
+  .tablist{display:flex;overflow-x:auto;border-radius:22px;scrollbar-width:none}.tab{flex:0 0 auto;font-size:14px;padding:12px 14px}
+  .blk{height:64px}
+  h3{font-size:34px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="kicker">23 to 25 Oct 2026 · Club Mahindra Virajpet</p>
+  <h1>Coorg Offsite 2026</h1>
+  <p class="lede">We can already feel the buzz in the office. Here’s everything for the trip in one place, so you can show up relaxed and ready to have a great time.</p>
+  <p class="count" id="count" hidden></p>
+</header>
+
+<nav class="tabs" aria-label="Plan sections">
+  <div class="tablist" role="tablist">
+    <button class="tab" role="tab" id="t-days" aria-controls="days" aria-selected="true">Day by day</button>
+    <button class="tab" role="tab" id="t-weather" aria-controls="weather" aria-selected="false" tabindex="-1">Weather</button>
+    <button class="tab" role="tab" id="t-travel" aria-controls="travel" aria-selected="false" tabindex="-1">Travel</button>
+    <button class="tab" role="tab" id="t-pack" aria-controls="pack" aria-selected="false" tabindex="-1">Packing</button>
+    <button class="tab" role="tab" id="t-rules" aria-controls="rules" aria-selected="false" tabindex="-1">Rules &amp; help</button>
+  </div>
+</nav>
+
+<!-- DAY BY DAY -->
+<section class="panel" id="days" role="tabpanel" aria-labelledby="t-days">
+  <p class="eyebrow">Your plan</p>
+  <h2>Day by day</h2>
+  <p class="intro">Two nights at the property, with a long bus ride on either side. Tap a day to jump to it. On the trip itself, the row that’s happening right now lights up.</p>
+
+  <div class="pills">
+    <span class="pill"><span class="sw green"></span>Coorg · 2 nights</span>
+    <span class="pill"><span class="sw coffee"></span>Bengaluru pickup &amp; drop</span>
+  </div>
+  <div class="legend">
+    <span><span class="sw green"></span>At the property</span>
+    <span><span class="sw hatch"></span>Bus travel day</span>
+    <span><span class="mk">A</span>Team activity</span>
+    <span><span class="mk">♪</span>DJ night</span>
+    <span><span class="mk">P</span>Pool time</span>
+  </div>
+
+  <div class="strip">
+    <button class="daybtn" data-go="d23" aria-label="Jump to Friday 23 October">
+      <span class="dl">Fr</span><span class="dn">23</span>
+      <span class="blk out">BLR → CRG<span class="marks"><i>A</i><i>♪</i></span></span>
+    </button>
+    <button class="daybtn" data-go="d24" aria-label="Jump to Saturday 24 October">
+      <span class="dl">Sa</span><span class="dn">24</span>
+      <span class="blk stay">CRG<span class="marks"><i>A</i><i>P</i><i>♪</i></span></span>
+    </button>
+    <button class="daybtn" data-go="d25" aria-label="Jump to Sunday 25 October">
+      <span class="dl">Su</span><span class="dn">25</span>
+      <span class="blk back">CRG → BLR</span>
+    </button>
+  </div>
+  <div class="months"><span>Oct</span><span>Oct</span></div>
+
+  <!-- Day 1 -->
+  <article class="day" id="d23">
+    <div class="date travel"><div class="dw">FRI</div><div class="dd">23</div><div class="dm">OCT</div></div>
+    <div class="body">
+      <p class="place">Bengaluru to Coorg</p>
+      <h3>Travel and welcome</h3>
+      <p class="sum">An early start. Be at the pickup point by 6:00 so the buses leave on time at 6:30. We stop for breakfast on the way, reach the property after 2:00 and sit straight down to lunch. The day ends with the first DJ night.</p>
+
+      <div class="box">
+        <p class="boxh">Timeline</p>
+        <ol class="rows">
+          <li class="row" data-s="2026-10-23T06:00" data-e="2026-10-23T06:30"><span class="t">6:00 AM</span><span class="a">Assemble at the pickup point<small>AFB office</small></span><span class="tag">Bus</span></li>
+          <li class="row" data-s="2026-10-23T06:30" data-e="2026-10-23T09:30"><span class="t">6:30 AM</span><span class="a">Buses depart</span><span class="tag">Bus</span></li>
+          <li class="row" data-s="2026-10-23T09:30" data-e="2026-10-23T10:30"><span class="t">9:30 – 10:30 AM</span><span class="a">Breakfast stop<small><a href="https://www.google.com/maps/search/?api=1&amp;query=Kamat+Lokaruchi+Veg+Restaurant+Ramanagara" target="_blank" rel="noopener">Kamat Lokaruchi Veg Restaurant, Ramanagara</a></small></span><span class="tag meal">Meal</span></li>
+          <li class="row" data-s="2026-10-23T12:30" data-e="2026-10-23T12:50"><span class="t">12:30 PM</span><span class="a">Bio break</span><span class="tag">Stop</span></li>
+          <li class="row" data-s="2026-10-23T14:00" data-e="2026-10-23T14:30"><span class="t">2:00 – 2:30 PM</span><span class="a">Arrive at the property<small>Club Mahindra Virajpet, Coorg</small></span><span class="tag">Bus</span></li>
+          <li class="row" data-s="2026-10-23T14:30" data-e="2026-10-23T15:00"><span class="t">2:30 PM</span><span class="a">Lunch, room allocation and freshen up<small>Lunch is served till 4:00 PM. Rooms are handed out 2:30 to 3:00. Roommates are mixed across teams, and the reveal comes with a game.</small></span><span class="tag meal">Meal</span></li>
+          <li class="row" data-s="2026-10-23T15:00" data-e="2026-10-23T15:10"><span class="t">3:00 – 3:10 PM</span><span class="a">Team photos</span><span class="tag team">Team</span></li>
+          <li class="row" data-s="2026-10-23T15:10" data-e="2026-10-23T15:15"><span class="t">3:10 – 3:15 PM</span><span class="a">Welcome in the hall</span><span class="tag team">Team</span></li>
+          <li class="row" data-s="2026-10-23T15:15" data-e="2026-10-23T16:00"><span class="t">3:15 – 3:30 PM</span><span class="a">Prashant’s address</span><span class="tag team">Team</span></li>
+          <li class="row" data-s="2026-10-23T16:00" data-e="2026-10-23T18:00"><span class="t">4:00 – 6:00 PM</span><span class="a">Team activity 1</span><span class="tag team">Activity</span></li>
+          <li class="row" data-s="2026-10-23T18:00" data-e="2026-10-23T19:30"><span class="t">6:00 – 7:00 PM</span><span class="a">Break to freshen up</span><span class="tag">Free</span></li>
+          <li class="row" data-s="2026-10-23T19:30" data-e="2026-10-23T22:30"><span class="t">7:30 – 10:30 PM</span><span class="a">DJ night and dinner<small>Wear whatever you’d like</small></span><span class="tag eve">Evening</span></li>
+        </ol>
+      </div>
+
+      <div class="cols">
+        <div class="note">
+          <p class="boxh">Keep with you on the bus</p>
+          <ul>
+            <li><strong>Government ID</strong><span>Needed at check-in.</span></li>
+            <li><strong>Water, snacks, a charged phone</strong><span>It’s a long ride and the network drops in the hills.</span></li>
+            <li><strong>Travel sickness tablets if you need them</strong><span>The last stretch is a winding ghat road.</span></li>
+          </ul>
+        </div>
+        <div class="note">
+          <p class="boxh">Good to know</p>
+          <ul>
+            <li><strong>The bus won’t wait</strong><span>Attendance is taken before departure. Running late? Call your coordinator right away.</span></li>
+            <li><strong>Pack a change in your day bag</strong><span>Rooms come after lunch, and the photos are at 3:00.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Day 2 -->
+  <article class="day" id="d24">
+    <div class="date"><div class="dw">SAT</div><div class="dd">24</div><div class="dm">OCT</div></div>
+    <div class="body">
+      <p class="place">Club Mahindra Virajpet, Coorg</p>
+      <h3>A full day at the property</h3>
+      <p class="sum">No travel today. Breakfast runs until 10:00 and the second team activity starts at 11:00. After lunch the afternoon is yours, and the day ends with the second DJ night and dinner on the lawn.</p>
+
+      <div class="box">
+        <p class="boxh">Timeline</p>
+        <ol class="rows">
+          <li class="row" data-s="2026-10-24T06:00" data-e="2026-10-24T10:00"><span class="t">Until 10:00 AM</span><span class="a">Breakfast</span><span class="tag meal">Meal</span></li>
+          <li class="row" data-s="2026-10-24T10:00" data-e="2026-10-24T11:00"><span class="t">10:00 – 10:30</span><span class="a">Get ready for the activity</span><span class="tag">Prep</span></li>
+          <li class="row" data-s="2026-10-24T11:00" data-e="2026-10-24T13:00"><span class="t">11:00 – 1:00 PM</span><span class="a">Team activity 2</span><span class="tag team">Activity</span></li>
+          <li class="row" data-s="2026-10-24T13:00" data-e="2026-10-24T14:00"><span class="t">1:00 – 2:00 PM</span><span class="a">Pool time</span><span class="tag">Free</span></li>
+          <li class="row" data-s="2026-10-24T14:00" data-e="2026-10-24T14:30"><span class="t">2:00 – 2:30 PM</span><span class="a">Change and head to the dining area</span><span class="tag">Prep</span></li>
+          <li class="row" data-s="2026-10-24T14:30" data-e="2026-10-24T16:00"><span class="t">2:30 – 4:00 PM</span><span class="a">Buffet lunch</span><span class="tag meal">Meal</span></li>
+          <li class="row" data-s="2026-10-24T16:00" data-e="2026-10-24T18:00"><span class="t">4:00 – 6:00 PM</span><span class="a">Free time</span><span class="tag">Free</span></li>
+          <li class="row" data-s="2026-10-24T18:00" data-e="2026-10-24T19:30"><span class="t">6:00 – 7:00 PM</span><span class="a">Get ready for the evening</span><span class="tag">Prep</span></li>
+          <li class="row" data-s="2026-10-24T19:30" data-e="2026-10-24T22:30"><span class="t">7:30 – 10:30 PM</span><span class="a">DJ night and dinner on the lawn</span><span class="tag eve">Evening</span></li>
+        </ol>
+      </div>
+
+      <div class="cols">
+        <div class="note">
+          <p class="boxh">What to wear</p>
+          <ul>
+            <li><strong>Comfortable, casual clothes</strong><span>The 11:00 activity is mostly building games, so no need for athleisure.</span></li>
+            <li><strong>Swimwear and a towel</strong><span>Pool time is right after the activity.</span></li>
+            <li><strong>Something warm for the lawn</strong><span>Coorg evenings get cool, and the grass may be wet.</span></li>
+          </ul>
+        </div>
+        <div class="note">
+          <p class="boxh">Free afternoon</p>
+          <ul>
+            <li><strong>Stay on the property</strong><span>For the whole stay. It’s for everyone’s safety, and everything good is happening right here.</span></li>
+            <li><strong>Be back by 6:00</strong><span>That leaves time to get ready before 7:30.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Day 3 -->
+  <article class="day" id="d25">
+    <div class="date travel"><div class="dw">SUN</div><div class="dd">25</div><div class="dm">OCT</div></div>
+    <div class="body">
+      <p class="place">Coorg to Bengaluru</p>
+      <h3>Heading home</h3>
+      <p class="sum">An easy morning. Have breakfast, pack and check out by 11:00. Attendance is taken at 11:30 before the buses leave, and we should be back in Bengaluru around 7:30 PM.</p>
+
+      <div class="box">
+        <p class="boxh">Timeline</p>
+        <ol class="rows">
+          <li class="row" data-s="2026-10-25T06:00" data-e="2026-10-25T10:00"><span class="t">Until 10:00 AM</span><span class="a">Breakfast</span><span class="tag meal">Meal</span></li>
+          <li class="row" data-s="2026-10-25T10:00" data-e="2026-10-25T11:30"><span class="t">10:00 – 11:00 AM</span><span class="a">Pack and check out</span><span class="tag">Prep</span></li>
+          <li class="row" data-s="2026-10-25T11:30" data-e="2026-10-25T14:30"><span class="t">11:30 AM</span><span class="a">Attendance and departure for Bengaluru</span><span class="tag">Bus</span></li>
+          <li class="row" data-s="2026-10-25T14:30" data-e="2026-10-25T15:00"><span class="t">2:30 PM</span><span class="a">Bio break</span><span class="tag">Stop</span></li>
+          <li class="row" data-s="2026-10-25T19:30" data-e="2026-10-25T20:30"><span class="t">7:30 PM</span><span class="a">Reach Bengaluru<small>Drop at the AFB office</small></span><span class="tag">Bus</span></li>
+        </ol>
+      </div>
+
+      <div class="cols">
+        <div class="note">
+          <p class="boxh">Before you leave the room</p>
+          <ul>
+            <li><strong>Check chargers, swimwear, the bathroom</strong><span>These are what usually get left behind.</span></li>
+            <li><strong>Hand back your key</strong><span>At the front desk by 11:00.</span></li>
+          </ul>
+        </div>
+        <div class="note">
+          <p class="boxh">On the way back</p>
+          <ul>
+            <li><strong>Get on the same vehicle you came in</strong><span>Unless your coordinator tells you otherwise.</span></li>
+            <li><strong>Plan your ride home</strong><span>We reach around 7:30 PM, Sunday traffic permitting.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- WEATHER -->
+<section class="panel" id="weather" role="tabpanel" aria-labelledby="t-weather" hidden>
+  <p class="eyebrow">Virajpet, Coorg</p>
+  <h2>Weather</h2>
+  <p class="intro">It’s looking wet. Expect cloudy mornings and rain most afternoons and evenings, with days in the mid 20s and nights dropping to around 18°C.</p>
+
+  <div class="wx">
+    <div class="wxday">
+      <div class="wxtop"><span class="wd">FRI 23 OCT</span><span class="ic" aria-hidden="true">🌧️</span></div>
+      <div class="wxbody">
+        <div class="temps">25° <span>/ 18°</span></div>
+        <p class="cond">Dry on the drive, then heavy rain around the time we arrive.</p>
+        <ul class="slots">
+          <li><span>Morning</span>Cloudy</li>
+          <li class="wet"><span>Afternoon</span>Heavy rain</li>
+          <li class="wet"><span>Evening</span>Heavy rain</li>
+        </ul>
+      </div>
+    </div>
+    <div class="wxday">
+      <div class="wxtop"><span class="wd">SAT 24 OCT</span><span class="ic" aria-hidden="true">⛈️</span></div>
+      <div class="wxbody">
+        <div class="temps">23° <span>/ 18°</span></div>
+        <p class="cond">A dry start for the morning activity, then rain from the afternoon.</p>
+        <ul class="slots">
+          <li><span>Morning</span>Cloudy</li>
+          <li class="wet"><span>Afternoon</span>Heavy rain</li>
+          <li class="wet"><span>Evening</span>Heavy rain</li>
+        </ul>
+      </div>
+    </div>
+    <div class="wxday">
+      <div class="wxtop"><span class="wd">SUN 25 OCT</span><span class="ic" aria-hidden="true">🌦️</span></div>
+      <div class="wxbody">
+        <div class="temps">25° <span>/ 18°</span></div>
+        <p class="cond">Light rain at check-out and showers on the drive back.</p>
+        <ul class="slots">
+          <li class="wet"><span>Morning</span>Light rain</li>
+          <li class="wet"><span>Afternoon</span>Heavy showers</li>
+          <li class="wet"><span>Evening</span>Rain</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="note">
+      <p class="boxh">What to wear</p>
+      <ul>
+        <li><strong>A jacket or something warm</strong><span>Evenings get cool once the rain sets in.</span></li>
+        <li><strong>Shoes with grip</strong><span>Paths and lawns will be wet.</span></li>
+        <li><strong>A spare pair of socks</strong><span>Wet feet on a long bus ride are no fun.</span></li>
+      </ul>
+    </div>
+    <div class="note">
+      <p class="boxh">If it rains</p>
+      <ul>
+        <li><strong>Saturday’s pool time and lawn dinner</strong><span>Both fall when rain is likely. Any changes will go out on the offsite channel.</span></li>
+        <li><strong>The ghat road can be slower</strong><span>Sunday’s drive back may take a little longer in the rain.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="src">Forecast checked on 21 Oct from <a href="https://www.yr.no/en/forecast/daily-table/2-1266426/India/Karnataka/Coorg/Coorg" target="_blank" rel="noopener">yr.no</a> and <a href="https://www.accuweather.com/en/in/virajpet/2870167/weather-forecast/2870167" target="_blank" rel="noopener">AccuWeather</a>. It can change, so take a look again the night before.</p>
+</section>
+
+<!-- TRAVEL -->
+<section class="panel" id="travel" role="tabpanel" aria-labelledby="t-travel" hidden>
+  <p class="eyebrow">Getting there</p>
+  <h2>Travel</h2>
+  <p class="intro">Everyone travels together by road, both ways. There’s no allotment in advance. You’ll find out on the day itself: whichever bus you sit in on Friday morning becomes your bus number, and you ride back in the same one on Sunday.</p>
+
+  <div class="fleet">
+    <div><b>5</b><span>buses</span></div>
+    <div><b>3</b><span>cars</span></div>
+    <div><b>~7h</b><span>each way, with stops</span></div>
+  </div>
+
+  <div class="leg">
+    <p class="place">Fri 23 Oct</p>
+    <h3>Bengaluru to Coorg</h3>
+    <p class="route">AFB office → Club Mahindra Virajpet</p>
+    <ol class="rows">
+      <li class="row"><span class="t">6:00 AM</span><span class="a">Assemble and mark attendance<small>AFB office</small></span><span class="tag">Be early</span></li>
+      <li class="row"><span class="t">6:30 AM</span><span class="a">Buses depart</span><span class="tag">Bus</span></li>
+      <li class="row"><span class="t">9:30 – 10:30 AM</span><span class="a">Breakfast stop<small><a href="https://www.google.com/maps/search/?api=1&amp;query=Kamat+Lokaruchi+Veg+Restaurant+Ramanagara" target="_blank" rel="noopener">Kamat Lokaruchi Veg Restaurant, Ramanagara</a></small></span><span class="tag meal">Meal</span></li>
+      <li class="row"><span class="t">12:30 PM</span><span class="a">Bio break</span><span class="tag">Stop</span></li>
+      <li class="row"><span class="t">2:00 – 2:30 PM</span><span class="a">Arrive at the property</span><span class="tag">Bus</span></li>
+    </ol>
+  </div>
+
+  <div class="leg">
+    <p class="place">Sun 25 Oct</p>
+    <h3>Coorg to Bengaluru</h3>
+    <p class="route">Club Mahindra Virajpet → AFB office</p>
+    <ol class="rows">
+      <li class="row"><span class="t">11:30 AM</span><span class="a">Attendance and departure</span><span class="tag">Be early</span></li>
+      <li class="row"><span class="t">2:30 PM</span><span class="a">Bio break</span><span class="tag">Stop</span></li>
+      <li class="row"><span class="t">7:30 PM</span><span class="a">Reach Bengaluru<small>Drop at the AFB office</small></span><span class="tag">Bus</span></li>
+    </ol>
+  </div>
+
+  <div class="cols">
+    <div class="note">
+      <p class="boxh">On the road</p>
+      <ul>
+        <li><strong>Sit near the front if you get motion sick</strong><span>The ghat section into Coorg has many bends.</span></li>
+        <li><strong>Save contacts offline</strong><span>Mobile signal is patchy on the way and around the property.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PACK -->
+<section class="panel" id="pack" role="tabpanel" aria-labelledby="t-pack" hidden>
+  <p class="eyebrow">Before Friday</p>
+  <h2>Pack &amp; contacts</h2>
+  <p class="intro">Here’s your offsite packing list. Tick things off as you pack. Your ticks stay on this device, so you can come back to the list.</p>
+  <p class="progress" id="progress"></p>
+
+  <div class="packgrid">
+    <div class="pack">
+      <h3>Clothes</h3>
+      <label class="chk"><input type="checkbox" data-k="tshirt"><span>Your AFB T-shirt</span></label>
+      <label class="chk"><input type="checkbox" data-k="athletic"><span>Athletic clothes and sports shoes<small>For the team activities</small></span></label>
+      <label class="chk"><input type="checkbox" data-k="djfit"><span>DJ party outfits for 2 nights<small>Friday and Saturday on the dance floor</small></span></label>
+      <label class="chk"><input type="checkbox" data-k="casual"><span>Casual clothes<small>For the rest of the stay</small></span></label>
+    </div>
+    <div class="pack">
+      <h3>For the stay</h3>
+      <label class="chk"><input type="checkbox" data-k="swimwear"><span>Swimwear<small>If you’re planning to get into the pool</small></span></label>
+      <label class="chk"><input type="checkbox" data-k="jacket"><span>A jacket or warm clothes<small>For cooler evenings</small></span></label>
+      <label class="chk"><input type="checkbox" data-k="medication"><span>Personal medications<small>Anything you may need during the trip</small></span></label>
+    </div>
+    <div class="pack">
+      <h3>Also handy</h3>
+      <label class="chk"><input type="checkbox" data-k="charger"><span>Phone charger and power bank</span></label>
+      <label class="chk"><input type="checkbox" data-k="bottle"><span>Water bottle</span></label>
+    </div>
+  </div>
+</section>
+
+<!-- RULES & HELP -->
+<section class="panel" id="rules" role="tabpanel" aria-labelledby="t-rules" hidden>
+  <p class="eyebrow">So everyone has a good time</p>
+  <h2>Ground rules</h2>
+  <p class="intro">A few things to keep in mind across the three days.</p>
+  <div class="docs">
+    <a href="https://drive.google.com/file/d/17npVelpHMqyL7-5iFyciaFPqG9rbyRsX/view" target="_blank" rel="noopener">Code of Conduct</a>
+    <a href="https://drive.google.com/file/d/1ZhCdkI0ptFt3ZDVL-l6Kx9RdxIxPOpHW/view" target="_blank" rel="noopener">POSH policy</a>
+  </div>
+  <ol class="rules">
+    <li><h3>Read the policies again</h3><p>Give the <a href="https://drive.google.com/file/d/17npVelpHMqyL7-5iFyciaFPqG9rbyRsX/view" target="_blank" rel="noopener">Code of Conduct</a> and <a href="https://drive.google.com/file/d/1ZhCdkI0ptFt3ZDVL-l6Kx9RdxIxPOpHW/view" target="_blank" rel="noopener">POSH</a> policies a quick read before you go.</p></li>
+    <li><h3>Drink responsibly</h3><p>Enjoy yourselves, but any behaviour while intoxicated is your own responsibility, so let’s keep it respectful.</p></li>
+    <li><h3>Roommates are a surprise</h3><p>Roommates are assigned across teams, and there’s a fun game attached to the reveal. Come in with an open mind.</p></li>
+    <li><h3>Room service is on you</h3><p>It isn’t covered by the company. If you order, the person the room is assigned to pays the bill.</p></li>
+    <li><h3>Stay on the property</h3><p>Please stay within the property for the whole stay. It’s for everyone’s safety, and everything good is happening right there.</p></li>
+  </ol>
+
+  <p class="eyebrow">Need help?</p>
+  <h2>Who to call</h2>
+  <div class="contacts">
+    <div class="contact"><div class="role">Offsite leads</div><div class="nm">Dev</div><div><a href="tel:+919036118316">+91 90361 18316</a></div><div class="nm" style="margin-top:14px">Mobi</div><div><a href="tel:+918011811981">+91 80118 11981</a></div></div>
+    <div class="contact"><div class="role">Travel and buses</div><div class="nm">Ashwin</div><div><a href="tel:+918867298569">+91 88672 98569</a></div><div class="nm" style="margin-top:14px">Zabi</div><div><a href="tel:+919986882000">+91 99868 82000</a></div></div>
+    <div class="contact"><div class="role">At the property</div><div class="nm">Suman</div><div><a href="tel:+918277294206">+91 82772 94206</a></div></div>
+  </div>
+
+  <footer>Made by People Ops, AppsForBharat. Timings may shift a little on the day, so watch the offsite channel for updates.</footer>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var map = {days:'t-days', weather:'t-weather', travel:'t-travel', pack:'t-pack', rules:'t-rules'};
+
+  function show(id, focus){
+    if(!map[id]) id = 'days';
+    tabs.forEach(function(t){
+      var on = t.getAttribute('aria-controls') === id;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      if(on && focus) t.focus();
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){
+      var id = t.getAttribute('aria-controls');
+      show(id);
+      try{ history.replaceState(null, '', '#' + id); }catch(e){}
+    });
+    t.addEventListener('keydown', function(e){
+      var n = null;
+      if(e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+      if(e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+      if(n){ e.preventDefault(); n.click(); n.focus(); }
+    });
+  });
+  var h = (location.hash || '').slice(1);
+  show(map[h] ? h : 'days');
+
+  document.querySelectorAll('[data-go]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.getElementById(b.getAttribute('data-go')).scrollIntoView({block:'start'});
+    });
+  });
+
+  // Current time in India, as "YYYY-MM-DDTHH:MM"
+  function istNow(){
+    var d = new Date(Date.now() + 5.5 * 3600000);
+    function p(n){ return (n < 10 ? '0' : '') + n; }
+    return d.getUTCFullYear() + '-' + p(d.getUTCMonth() + 1) + '-' + p(d.getUTCDate()) + 'T' + p(d.getUTCHours()) + ':' + p(d.getUTCMinutes());
+  }
+  function tick(){
+    var now = istNow();
+    document.querySelectorAll('.row[data-s]').forEach(function(r){
+      r.classList.toggle('now', now >= r.dataset.s && now < r.dataset.e);
+    });
+    var c = document.getElementById('count');
+    var start = Date.UTC(2026, 9, 23, 1, 0); // 6:30 AM IST
+    var end = Date.UTC(2026, 9, 25, 14, 0);  // 7:30 PM IST
+    var t = Date.now();
+    if(t < start){
+      var days = Math.ceil((start - t) / 86400000);
+      c.textContent = days <= 1 ? 'Buses leave tomorrow at 6:30 AM' : 'Buses leave in ' + days + ' days';
+      c.hidden = false;
+    } else if(t < end){
+      c.textContent = 'The offsite is on';
+      c.hidden = false;
+    } else { c.hidden = true; }
+  }
+  tick(); setInterval(tick, 60000);
+
+  // Packing list, saved on this device only
+  var KEY = 'coorg-offsite-pack';
+  var saved = {};
+  try{ saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; }catch(e){ saved = {}; }
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.chk input'));
+  function progress(){
+    var n = boxes.filter(function(b){ return b.checked; }).length;
+    document.getElementById('progress').textContent = n + ' of ' + boxes.length + ' packed';
+  }
+  boxes.forEach(function(b){
+    b.checked = !!saved[b.dataset.k];
+    b.addEventListener('change', function(){
+      saved[b.dataset.k] = b.checked;
+      try{ localStorage.setItem(KEY, JSON.stringify(saved)); }catch(e){}
+      progress();
+    });
+  });
+  progress();
+})();
+</script>
+</body>
+</html>
